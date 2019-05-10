@@ -1,0 +1,14 @@
+.Me{
+  display: flex;
+  justify-content: center;
+margin-top: 80rpx;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+}
+
+.Me text {
+  opacity: 0.8;
+}

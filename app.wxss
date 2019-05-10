@@ -1,0 +1,8 @@
+@import "pages/icon.wxss";
+@import "pages/main.wxss";
+
+
+
+/*
+小程序样式采用ColorUi。  ColorUi for MP-weixin  v2.1.4 | by 文晓港 2019年4月25日19:15:42
+*/

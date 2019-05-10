@@ -1,0 +1,94 @@
+<view class="cu-form-group margin-top">
+  <view class='title'>图片来源</view>
+  <picker bindchange="fromPickerChange" value="{{from}}" range="{{frompicker}}">
+    <view class="picker">
+      {{from}}
+    </view>
+  </picker>
+</view>
+<view class="cu-form-group">
+  <view class='title'>最大支持图片数</view>
+  <picker bindchange="countPickerChange" value="{{count}}" range="{{countpicker}}">
+    <view class="picker">
+      {{count}}
+    </view>
+  </picker>
+</view>
+<view class="cu-form-group">
+  <view class='title' wx:if="{{video}}">点击切换为图片</view>
+    <view class='title' hidden="{{video}}">是否更改为视频(点击关闭)</view>
+  <switch bindchange='Isvideo' checked='video'></switch>
+</view>
+<view class="cu-form-group margin-top" wx:if="{{video}}">
+  <view class='title'>视频最大时长</view>
+  <picker bindchange="videoPickerChange" value="{{vtime}}" range="{{vtimepicker}}">
+    <view class="picker">
+      {{vtime}}s
+    </view>
+  </picker>
+</view>
+<view class="cu-form-group" wx:if="{{video}}">
+  <view class='title'>摄像头方向</view>
+  <picker bindchange="cdirectionPickerChange" value="{{cdirection}}" range="{{cdirectionpicker}}">
+    <view class="picker">
+      {{cdirection}}
+    </view>
+  </picker>
+</view>
+<view class="cu-form-group" wx:if="{{video}}" >
+  <view class='title'>上传时是否压缩</view>
+  <switch checked bindchange="IsCompressed"></switch>
+</view>
+<view class="cu-bar bg-white margin-top" hidden="{{video}}">
+  <view class="action">
+    图片上传
+  </view>
+  <view class="action" wx:if="{{imgmax>0}}">
+    {{imgList.length}}/{{count}}
+  </view>
+  <view class="action" wx:if="{{imgmax<0}}">
+    无限制 </view>
+</view>
+<view class="cu-bar bg-white margin-top"  wx:if="{{video}}">
+  <view class="action">
+    视频上传
+  </view>
+  <view class="action" >
+    {{videoList.length}}/1
+  </view>
+</view>
+
+<view class="cu-form-group" wx:if="{{video}}">
+  <view class="grid col-4 grid-square flex-sub">
+    <view class="bg-img" wx:for="{{videoList}}" wx:key="{{index}}" bindtap="ViewVideo" data-url="{{videoList[index]}}">
+      <video src='{{videoList[index]}}'></video>
+      <view class="cu-tag bg-red" catchtap="DelVideo" data-index="{{index}}">
+        <text class="cuIcon-close"></text>
+      </view>
+    </view>
+    <view class="solids" bindtap="ChooseVideo" wx:if="{{imgList.length<2}}">
+      <text class="cuIcon-cameraadd"></text>
+    </view>
+  </view>
+</view>
+
+<view class="cu-form-group" hidden="{{video}}">
+  <view class="grid col-4 grid-square flex-sub">
+    <view class="bg-img" wx:for="{{imgList}}" wx:key="{{index}}" bindtap="ViewImage" data-url="{{imgList[index]}}">
+      <image src='{{imgList[index]}}' mode='aspectFill'></image>
+      <view class="cu-tag bg-red" catchtap="DelImg" data-index="{{index}}">
+        <text class="cuIcon-close"></text>
+      </view>
+    </view>
+    <view class="solids" bindtap="ChooseImage" wx:if="{{imgList.length<4}}">
+      <text class="cuIcon-cameraadd"></text>
+    </view>
+  </view>
+</view>
+  <view class="Me">
+    <view class="text-xl">4.28西工大集训作业
+    </view>
+    <view class="margin-top-sm">
+      <text>By:张喆的白东升</text>
+    </view>
+  </view>
